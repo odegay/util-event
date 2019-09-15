@@ -15,6 +15,7 @@
         <java.version>1.8</java.version>    
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.version>1.2.71</kotlin.version>
+		<mavencompiler.version>3.8.1</mavencompiler.version>
    		<github.global.server>github</github.global.server>
         <github.maven-plugin>0.12</github.maven-plugin>
     </properties>
@@ -26,7 +27,7 @@
 			<url>http://central.maven.org/maven2/</url>
 		</repository>
 
-        <repository>
+<!--        <repository>
             <id>oxotarp-mvn-repo</id>
             <url>https://raw.github.com/odegay/OxotaRP_Arts/mvn-repo/</url>
             <snapshots>
@@ -34,10 +35,25 @@
                 <updatePolicy>always</updatePolicy>
             </snapshots>
         </repository>                       
+-->
+		        <repository>
+            <id>oxotarp-shoebill</id>
+            <url>http://35.206.126.225/artifactory/oxotarp_shoebill/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>                       
     </repositories>
 
-<!--    <distributionManagement>
-        <repository>
+   <distributionManagement>
+		<repository>
+            <id>deployment</id>
+            <name>Releases</name>
+            <url>http://35.206.126.225/artifactory/oxotarp_shoebill/</url>
+        </repository>
+<!--       
+		<repository>
             <id>deployment</id>
             <name>Releases</name>
             <url>http://repo.sampx.ru/repository/maven-releases/</url>
@@ -47,8 +63,9 @@
             <name>Snapshots</name>
             <url>http://repo.sampx.ru/repository/maven-snapshots/</url>
         </snapshotRepository>
-    </distributionManagement>
 -->
+    </distributionManagement>
+	
 	<licenses>
 		<license>
 			<name>Apache License,Version 2.0</name>
@@ -56,28 +73,13 @@
 		</license>
 	</licenses>
 
-	<scm>
+<!--	<scm>
 		<url>https://github.com/odegay/util-event</url>
 		<connection>https://github.com/odegay/util-event.git</connection>
 		<developerConnection>scm:git:git@github.com:odegay/util-event.git</developerConnection>
 	</scm>
+-->
 
-	<developers>
-		<developer>
-			<name>MK124</name>
-			<id>MK124</id>
-			<url>https://github.com/mk124</url>
-			<email>mk124a@gmail.com</email>
-			<organization>Shoebill</organization>
-			<organizationUrl>https://github.com/Shoebill</organizationUrl>
-			<timezone>+8</timezone>
-		</developer>
-
-		<developer>
-			<name>Marvin Haschker</name>
-			<id>123marvin123</id>
-		</developer>
-	</developers>
 
 <!--	<ciManagement>
 		<system>jenkins</system>
@@ -145,6 +147,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+				<version>${mavencompiler.version}</version>
                 <executions>
                     <execution>
                         <id>compile</id>
@@ -170,12 +173,12 @@
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>2.8.1</version>
-                <configuration>
+<!--                <configuration>
                     <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
-                </configuration>
+                </configuration>-->
             </plugin>
 
-            <plugin>
+<!--            <plugin>
                 <groupId>com.github.github</groupId>
                 <artifactId>site-maven-plugin</artifactId>
                 <version>${github.maven-plugin}</version>
@@ -198,7 +201,7 @@
                     </execution>
                 </executions>
             </plugin>                    
-                        
+-->                        
         </plugins>
 	</build>
 
