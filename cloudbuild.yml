@@ -1,0 +1,4 @@
+steps:
+- name: maven:latest
+  entrypoint: 'mvn'
+  args: ['deploy']
